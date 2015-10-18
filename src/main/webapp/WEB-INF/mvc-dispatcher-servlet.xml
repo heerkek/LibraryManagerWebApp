@@ -13,7 +13,7 @@
           http://www.springframework.org/schema/mvc/spring-mvc.xsd">
     <context:component-scan base-package="com.hasanemreerkek"/>
 
-    <mongo:mongo host="127.0.0.1" port="27017" />
+    <mongo:mongo host="ds041144.mongolab.com" port="41144" />
     <mongo:db-factory dbname="books" />
 
     <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
