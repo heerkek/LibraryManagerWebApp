@@ -16,9 +16,13 @@ public class SpringMongoConfig {
 
     public @Bean
     MongoDbFactory mongoDbFactory() throws Exception {
-        String uri="mongodb://books:123456@ds055842.mongolab.com:55842/books";
-        
-        return new SimpleMongoDbFactory(new MongoURI(uri));
+        UserCredentials credentials = new UserCredentials("books", "123456");
+        String textUri="mongodb://books:123456@ds055842.mongolab.com:55842/heroku_p03xvq96";
+        MongoClientURI uri = new MongoClientURI(textUri);
+        MongoClient client = new MongoClient(uri);
+
+
+        return new SimpleMongoDbFactory(client,"books");
     }
 
     public @Bean
