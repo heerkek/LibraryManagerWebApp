@@ -18,7 +18,7 @@ import java.util.List;
  */
 @Repository
 public class BookDAO {
-    @Qualifier("mongoTemplate")
+    @Qualifier("db")
     @Autowired
     private MongoOperations mongoOperation;
 
