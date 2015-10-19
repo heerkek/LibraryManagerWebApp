@@ -16,7 +16,9 @@ public class SpringMongoConfig {
 
     public @Bean
     MongoDbFactory mongoDbFactory() throws Exception {
-        return new SimpleMongoDbFactory(new MongoClient(), "books");
+        String uri="mongodb://books:123456@ds055842.mongolab.com:55842/books";
+        
+        return new SimpleMongoDbFactory(new MongoURI(uri));
     }
 
     public @Bean
