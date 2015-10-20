@@ -1,10 +1,11 @@
 package com.hasanemreerkek.services;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.HttpClientBuilder;
-import org.codehaus.jackson.map.ObjectMapper;
+
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
@@ -26,7 +27,7 @@ public class CaptcheService {
      * @throws IOException
      */
     public boolean isSuccess(String grecaptchaResponse) throws IOException {
-        String secretKey = "6Lc-DQ8TAAAAAJvDMcypcTux_iQSav42mikuDR7I";
+        String secretKey = "6LffLA8TAAAAAFUqxEzl_IPCtemoHUt1fuDeRXNQ";
         String url = "https://www.google.com/recaptcha/api/siteverify?secret=" + secretKey + "&response=" + grecaptchaResponse;
 
         HttpClient client = HttpClientBuilder.create().build();
