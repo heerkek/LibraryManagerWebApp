@@ -1,5 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en" ng-app="libraryApp">
 <head>
@@ -43,7 +44,8 @@
         <div cg-busy="{promise:myPromise,message:'Loading...'}">
             <form role="form" name="bookEditForm" ng-submit="actionBook(book)" novalidate>
                 <div class="form-group">
-                    <span class="alert alert-info" role="alert"> {{libraryCtrl.message}} </span>
+                    <span class="alert alert-info alert-dismissible" role="alert">
+                        <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> {{libraryCtrl.message}} </span>
                 </div>
 
 
@@ -67,7 +69,7 @@
 
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <div class="g-recaptcha" data-sitekey="6Lc-DQ8TAAAAAOsYNE9h76Zn3Rc8NPAO5c62qGrX"
+                        <div class="g-recaptcha" data-sitekey="6LffLA8TAAAAALG1Cc8vSvHRLvUy4u5oiWsw82AR"
                              ng-show="(modalAction=='add')"></div>
                     </div>
                 </div>
@@ -128,10 +130,10 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="${angularJs}"></script>
-<script src="${indexJs}"></script>
 <script src="${angularbusyJs}"></script>
 <script src="${infinitescrollJs}"></script>
 <script src="${bootstrapJs}"></script>
+<script src="${indexJs}"></script>
 
 </body>
 </html>

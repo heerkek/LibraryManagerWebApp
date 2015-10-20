@@ -8,12 +8,13 @@
     <name>LibraryManagerWebApp Maven Webapp</name>
 
     <properties>
-        <spring.version>3.2.0.RELEASE</spring.version>
-        <spring.data-mongodb>1.2.0.RELEASE</spring.data-mongodb>
+        <spring.version>4.0.9.RELEASE</spring.version>
+        <spring.data-mongodb>1.7.0.RELEASE</spring.data-mongodb>
         <spring.spring-mock>2.0.8</spring.spring-mock>
+        <spring-security.version>4.0.1.RELEASE</spring-security.version>
         <mockito.version>1.9.5</mockito.version>
-        <mongo-java-driver.version>2.11.0</mongo-java-driver.version>
-        <jackson.version>1.4.2</jackson.version>
+        <mongo-java-driver.version>3.0.3</mongo-java-driver.version>
+        <jackson.version>1.9.13</jackson.version>
         <jstl.version>1.2</jstl.version>
         <httpclient.version>4.4</httpclient.version>
         <json-simple.version>1.1</json-simple.version>
@@ -35,15 +36,14 @@
 
         <dependency>
             <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>2.5</version>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
         </dependency>
 
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>jsp-api</artifactId>
             <version>2.1</version>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -58,7 +58,32 @@
             <version>${spring.version}</version>
         </dependency>
 
-
+        <!-- Spring Security -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>${spring-security.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${spring-security.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-acl</artifactId>
+            <version>${spring-security.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${spring-security.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
         <!-- Spring data mongodb -->
         <dependency>
             <groupId>org.springframework.data</groupId>
@@ -66,11 +91,7 @@
             <version>${spring.data-mongodb}</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-mock</artifactId>
-            <version>${spring.spring-mock}</version>
-        </dependency>
+
 
         <dependency>
             <groupId>org.hamcrest</groupId>
@@ -89,14 +110,19 @@
         <dependency>
             <groupId>org.mongodb</groupId>
             <artifactId>mongo-java-driver</artifactId>
-            <version>${mongo-java-driver.version}</version>	    
+            <version>${mongo-java-driver.version}</version>
         </dependency>
 
 
-        <dependency><!-- jackson -->
-            <groupId>org.codehaus.jackson</groupId>
-            <artifactId>jackson-mapper-asl</artifactId>
-            <version>${jackson.version}</version>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.4.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.4.3</version>
         </dependency>
 
         <dependency>
@@ -149,11 +175,12 @@
     <build>
         <finalName>LibraryManagerWebApp</finalName>
         <plugins>
+
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>1.7</source>
+                    <target>1.7</target>
                 </configuration>
             </plugin>
 
@@ -175,7 +202,15 @@
                     <stopPort>8089</stopPort>
                 </configuration>
             </plugin>
-
+            <plugin>
+                <groupId>com.heroku.sdk</groupId>
+                <artifactId>heroku-maven-plugin</artifactId>
+                <version>0.5.4</version>
+                <configuration>
+                    <appName>gentle-citadel-9871</appName>
+                    <jdkVersion>1.7</jdkVersion>
+                </configuration>
+            </plugin>
 
         </plugins>
     </build>
